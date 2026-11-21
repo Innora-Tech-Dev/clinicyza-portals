@@ -1,0 +1,65 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.title {
+  margin-bottom: var(--space-2);
+  font-size: clamp(28px, 3.2vw, 36px);
+  line-height: 1.2;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.statCard {
+  padding: var(--space-6);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-card);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+/* Section card used by dashboard sections */
+.panel {
+  padding: var(--space-6);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-card);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.panelTitle {
+  margin-bottom: var(--space-5);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+@media (max-width: 1200px) {
+  .statGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .statGrid {
+    grid-template-columns: 1fr;
+  }
+}
