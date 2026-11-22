@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { isAuthError } from "@/lib/api";
+import { useRealtime } from "@/lib/useRealtime";
 import { getMe, logout } from "@/services/auth";
 import { PortalContext } from "./PortalContext";
 import styles from "./portalShell.module.css";
@@ -19,6 +20,7 @@ export default function PortalShell({ portal, sidebar, navbar, children }) {
   const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
+  const realtime = useRealtime(portal.key, Boolean(user));
 
   const goToLogin = useCallback(
     () => router.replace(`${portal.loginPath}?next=${encodeURIComponent(pathname)}`),
@@ -45,8 +47,8 @@ export default function PortalShell({ portal, sidebar, navbar, children }) {
   }, [portal.key, portal.loginPath, router]);
 
   const value = useMemo(
-    () => ({ portal, user, signOut, signingOut, menuOpen, setMenuOpen }),
-    [portal, user, signOut, signingOut, menuOpen],
+    () => ({ portal, user, signOut, signingOut, menuOpen, setMenuOpen, realtime }),
+    [portal, user, signOut, signingOut, menuOpen, realtime],
   );
 
   return (

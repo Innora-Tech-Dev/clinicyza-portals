@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 // clinicyza-server base URL (server-side only, read at build time).
-const BACKEND_URL = (process.env.BACKEND_URL || "http://localhost:5050").replace(/\/$/, "");
+const BACKEND_URL = (process.env.BACKEND_URL || "http://localhost:8000").replace(/\/$/, "");
 
 const nextConfig = {
   // cacheComponents / partialPrefetching are disabled: Ant Design's CSS-in-JS
